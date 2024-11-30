@@ -1,11 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import localFont from 'next/font/local';
-
-const emilysCandy = localFont({
-  src: '../fonts/EmilysCandy-Regular.ttf',
-  display: 'swap',
-})
+import { emilysCandy } from '@/app/lib/fonts'
 
 export default function Hero() {
   return (
@@ -50,7 +45,7 @@ export default function Hero() {
                   Buy on Amazon
                 </Link>
                 <Link 
-                  href="/book" 
+                  href="/books/a-cure-for-magic" 
                   className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors"
                 >
                   Learn More
