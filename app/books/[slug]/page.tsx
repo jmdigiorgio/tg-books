@@ -13,10 +13,9 @@ interface BookData {
   amazonLink: string;
   series?: string;
   releaseDate: string;
-  // Add more fields as needed
 }
 
-// This would eventually come from a CMS or database
+// Book data
 const books: Record<string, BookData> = {
   'a-cure-for-magic': {
     slug: 'a-cure-for-magic',
@@ -29,9 +28,13 @@ const books: Record<string, BookData> = {
   }
 };
 
-// Add generateMetadata for better SEO
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const book = books[slug];
   
   if (!book) {
@@ -46,21 +49,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-// Make sure generateStaticParams is properly typed
-export function generateStaticParams(): Array<{ slug: string }> {
-  return Object.keys(books).map((slug) => ({
-    slug,
-  }));
-}
-
-export default async function BookPage({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+export default async function BookPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
 }) {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const book = books[slug];
 
   if (!book) {
