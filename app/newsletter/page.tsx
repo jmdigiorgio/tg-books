@@ -1,13 +1,40 @@
+'use client';
 import { emilysCandy } from '@/app/lib/fonts';
-import { Metadata } from 'next';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: 'Newsletter | Talia Greer',
-  description: 'Subscribe to Talia Greer\'s newsletter for updates and exclusive content',
-};
+import { useState, FormEvent } from 'react';
 
 export default function NewsletterPage() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://assets.mailerlite.com/jsonp/391339/forms/105397883064288697/subscribe', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setStatus('success');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus('error');
+        setErrorMessage(data.message || 'Something went wrong. Please try again.');
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <h1 className={`${emilysCandy.className} text-4xl sm:text-5xl lg:text-6xl mb-8 text-center`}>
@@ -38,32 +65,43 @@ export default function NewsletterPage() {
             </p>
           </div>
 
-          <form 
-            action="https://assets.mailerlite.com/jsonp/391339/forms/105397883064288697/subscribe" 
-            method="post" 
-            target="_blank"
-            className="space-y-4"
-          >
-            <div>
-              <input 
-                type="email" 
-                name="fields[email]" 
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                placeholder="Email"
-                required
-              />
+          {status === 'success' ? (
+            <div className="text-center p-4 bg-green-100 text-green-700 rounded-md">
+              Thanks for subscribing! Please check your email to confirm your subscription.
             </div>
-            <div>
-              <button 
-                type="submit" 
-                className="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors"
-              >
-                Subscribe
-              </button>
-            </div>
-            <input type="hidden" name="ml-submit" value="1" />
-            <input type="hidden" name="anticsrf" value="true" />
-          </form>
+          ) : (
+            <form 
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <div>
+                <input 
+                  type="email" 
+                  name="fields[email]" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Email"
+                  required
+                  disabled={status === 'loading'}
+                />
+              </div>
+              {status === 'error' && (
+                <div className="text-red-600 text-sm">
+                  {errorMessage}
+                </div>
+              )}
+              <div>
+                <button 
+                  type="submit" 
+                  className="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors disabled:opacity-50"
+                  disabled={status === 'loading'}
+                >
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </div>
+              <input type="hidden" name="ml-submit" value="1" />
+              <input type="hidden" name="anticsrf" value="true" />
+            </form>
+          )}
         </div>
       </div>
     </div>
