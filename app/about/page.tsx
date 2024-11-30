@@ -19,7 +19,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="prose prose-lg max-w-none">
           <p className="mb-8">
-            Talia lives in the mountains with her husband, two chaotic cat children and a very stubborn corgi named Egg Roll. When she&apos;s not writing, she&apos;s drinking iced coffee or watching truly terrible horror movies.
+            Hi! I live in the mountains with my husband, two chaotic cat children and a very stubborn corgi named Egg Roll. When I&apos;m not writing, I&apos;m drinking iced coffee or watching truly terrible horror movies.
           </p>
 
           <p className="mb-8">
@@ -31,8 +31,8 @@ export default function AboutPage() {
             >
               join my newsletter
             </a>. 
-            You can also find me on social media, where I post about writing updates, book 
-            recommendations, and occasional cat photos.
+            You can also find me on social media, where I post writing updates, book 
+            recommendations, and occasional pet photos.
           </p>
 
           <p>
