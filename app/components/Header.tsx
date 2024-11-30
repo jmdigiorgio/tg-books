@@ -11,7 +11,7 @@ const emilysCandy = localFont({
 
 export default function Header() {
   return (
-    <header className="w-full py-4 px-4 sm:px-6 lg:px-8 bg-white shadow-sm">
+    <header className="fixed top-0 w-full py-4 px-4 sm:px-6 lg:px-8 bg-white shadow-sm z-50">
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex-1">
           <Link href="/" className={`text-2xl font-bold ${emilysCandy.className}`}>
