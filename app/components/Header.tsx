@@ -23,10 +23,10 @@ export default function Header() {
           <Link href="/books" className="hover:text-gray-600 transition-colors">
             Books
           </Link>
-          <Link href="/about" className="hover:text-gray-600 transition-colors">
+          <Link href="/newsletter" className="hover:text-gray-600 transition-colors">
             Newsletter
           </Link>
-          <Link href="/contact" className="hover:text-gray-600 transition-colors">
+          <Link href="/about" className="hover:text-gray-600 transition-colors">
             About
           </Link>
         </div>
