@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        custom: {
+          bg: "#f5f5f5",
+        },
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)"],
       },
     },
   },

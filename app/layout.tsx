@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Header from "./components/Header";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -11,6 +12,11 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const playfair = localFont({
+  src: "./fonts/PlaywriteITModerna-VariableFont_wght.ttf",
+  variable: "--font-playfair",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-custom-bg text-gray-900`}
       >
-        {children}
+        <Header />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {children}
+        </main>
       </body>
     </html>
   );
