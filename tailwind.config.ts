@@ -12,7 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         custom: {
-          bg: "#f5f5f5",
+          bg: "#F3E8FF",
         },
       },
       fontFamily: {

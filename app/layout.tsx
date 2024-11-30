@@ -35,9 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-custom-bg text-gray-900`}
       >
         <Header />
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

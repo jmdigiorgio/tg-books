@@ -2,13 +2,19 @@ import Link from 'next/link';
 import { FaInstagram, FaGoodreads, FaAmazon } from 'react-icons/fa';
 import { SiBookbub } from 'react-icons/si';
 import { FaTiktok } from 'react-icons/fa6';
+import localFont from 'next/font/local'
+
+const emilysCandy = localFont({
+  src: '../fonts/EmilysCandy-Regular.ttf',
+  display: 'swap',
+})
 
 export default function Header() {
   return (
-    <header className="w-full py-4 px-4 sm:px-6 lg:px-8">
+    <header className="w-full py-4 px-4 sm:px-6 lg:px-8 bg-white shadow-sm">
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex-1">
-          <Link href="/" className="text-2xl font-bold font-playfair">
+          <Link href="/" className={`text-2xl font-bold ${emilysCandy.className}`}>
             Talia Greer
           </Link>
         </div>
@@ -26,6 +32,9 @@ export default function Header() {
         </div>
 
         <div className="flex gap-4 flex-1 justify-end">
+          <Link href="https://www.amazon.com/stores/Talia-Greer/author/B0C5467N5V" className="hover:text-gray-600 transition-colors" target="_blank" rel="noopener noreferrer">
+            <FaAmazon size={20} />
+          </Link>
           <Link href="https://instagram.com/taliagreerbooks" className="hover:text-gray-600 transition-colors" target="_blank" rel="noopener noreferrer">
             <FaInstagram size={20} />
           </Link>
@@ -34,9 +43,6 @@ export default function Header() {
           </Link>
           <Link href="https://www.goodreads.com/author/show/35989564.Talia_Greer" className="hover:text-gray-600 transition-colors" target="_blank" rel="noopener noreferrer">
             <FaGoodreads size={20} />
-          </Link>
-          <Link href="https://www.amazon.com/stores/Talia-Greer/author/B0C5467N5V" className="hover:text-gray-600 transition-colors" target="_blank" rel="noopener noreferrer">
-            <FaAmazon size={20} />
           </Link>
           <Link href="https://www.bookbub.com/authors/talia-greer" className="hover:text-gray-600 transition-colors" target="_blank" rel="noopener noreferrer">
             <SiBookbub size={20} />
