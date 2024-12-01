@@ -20,10 +20,10 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://taliagreerbooks.com'),
+  metadataBase: new URL('https://taliagreer.com'),
   title: {
     default: "Talia Greer | Fantasy & Romance Author",
-    template: "%s | Talia Greer"
+    template: "%s"
   },
   description: "Talia Greer is the author of fantasy romance and romantic fantasy novels including The Ardor Cycle and Wild Wanderings series.",
   keywords: ["fantasy romance", "romantic fantasy", "fantasy author", "romance author", "Talia Greer", "The Ardor Cycle", "Wild Wanderings"],
