@@ -20,8 +20,30 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Talia Greer",
-  description: "Talia Greer Books",
+  metadataBase: new URL('https://taliagreerbooks.com'),
+  title: {
+    default: "Talia Greer | Fantasy & Romance Author",
+    template: "%s | Talia Greer"
+  },
+  description: "Talia Greer is the author of fantasy romance and romantic fantasy novels including The Ardor Cycle and Wild Wanderings series.",
+  keywords: ["fantasy romance", "romantic fantasy", "fantasy author", "romance author", "Talia Greer", "The Ardor Cycle", "Wild Wanderings"],
+  authors: [{ name: "Talia Greer" }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://taliagreerbooks.com',
+    siteName: 'Talia Greer Books',
+    title: 'Talia Greer | Fantasy & Romance Author',
+    description: 'Talia Greer is the author of fantasy romance and romantic fantasy novels including The Ardor Cycle and Wild Wanderings series.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1875,
+        height: 2775,
+        alt: 'Talia Greer Books'
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
