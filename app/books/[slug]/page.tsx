@@ -13,6 +13,11 @@ interface ExtendedBook extends Book {
   heatLevel: string;
   tags: string[];
   contentWarnings: string[];
+  theme: {
+    background: string;
+    text: string;
+    accent: string;
+  };
 }
 
 // Update the books data while preserving all existing information
@@ -166,6 +171,48 @@ Will she make a dutiful return to her indifferent fiance? Or will she choose the
       'explicit sex scenes',
       'foul language'
     ]
+  },
+  'poisoners-vengeance': {
+    ...baseBooks['poisoners-vengeance'],
+    description: `**A nun with a thirst for revenge. A demon out to clear his name. A bargain that might destroy them.**
+
+&nbsp;
+
+Poison-brewing nun Annette has one goal in life: to be awarded the top of her class, and with it, gain her freedom. When a new novitiate steals the award, her dream turns toward revenge.
+
+&nbsp;
+
+Her retribution? Teaming up with a demon to secretly sabotage the abbey's recertification.
+
+&nbsp;
+
+When Rigo, the abbey's demon prisoner of twenty years, offers Annette his assistance, she can't help accepting. All he wants in exchange is his freedom–and the ancient relic Annette has accidentally bound to herself. Though the relic, too, believes in her cause and nurtures her wrath, its self-proclaimed holiness doesn't quite add up, leaving her unsure who to trust.
+
+&nbsp;
+
+To untangle the web of lies and secrets lying beneath the abbey, Annette must decide. Trust the ancient relic, a symbol of her faith, who claims to have her best interests at heart? Or trust the demon–the monster–she was taught to fear, whose intense gaze and keen observations make her feel seen like never before?
+
+&nbsp;
+
+*Perfect for fans of Ava Reid and Carissa Broadbent, POISONER'S VENGEANCE is an adult romantic fantasy novel with a slow burn enemies to lovers romance, dangerous bargains, and an isolated gothic fantasy setting.*`,
+    releaseDate: '2025',
+    heatLevel: 'Medium-High',
+    tags: [
+      'dangerous bargains',
+      'a Black and autistic FMC',
+      'slow burn enemies to lovers romance',
+      'isolated dark gothic fantasy setting',
+      'poison nun with a mission',
+      'demon prisoner out for escape',
+      'only one bed'
+    ],
+    contentWarnings: [
+      'physical abuse',
+      'blood',
+      'mild body horror and gore',
+      'fictional religious horror',
+      'sexual content'
+    ]
   }
 };
 
@@ -204,83 +251,85 @@ export default async function BookPage({
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="relative w-full max-w-md mx-auto lg:mx-0 aspect-[2/3] shadow-2xl">
-          <Image
-            src={book.coverImage}
-            alt={book.title}
-            fill
-            className="object-cover rounded-lg"
-            priority
-          />
-        </div>
-        
-        <div>
-          <h1 className={`${emilysCandy.className} text-4xl sm:text-5xl lg:text-6xl mb-4`}>
-            {book.title}
-          </h1>
-          {(book.series || book.genre) && (
-            <p className="text-xl mb-4 text-purple-600">
-              <Tooltip 
-                content={
-                  book.genre === 'Romantic Fantasy' 
-                    ? 'Fantasy first, with a heaping spoonful of romance, as a treat.'
-                    : book.genre === 'Fantasy Romance'
-                    ? 'Romance-centered stories with a fantastical bent.'
-                    : `This book is categorized as ${book.genre}`
-                }
-              >
-                <span className="bg-purple-200 text-purple-900 px-3 py-1 rounded-full">
-                  {book.genre}
-                </span>
-              </Tooltip>
-              {book.series && (
-                <>
-                  <span className="mx-2">•</span>
-                  {book.series}
-                </>
-              )}
-            </p>
-          )}
-          <div className="text-lg mb-8 prose prose-p:my-6">
-            <ReactMarkdown>{book.description}</ReactMarkdown>
+    <div className={`w-full min-h-screen ${book.theme.background}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="relative w-full max-w-md mx-auto lg:mx-0 aspect-[2/3] shadow-2xl">
+            <Image
+              src={book.coverImage}
+              alt={book.title}
+              fill
+              className="object-cover rounded-lg"
+              priority
+            />
           </div>
           
-          <Link 
-            href={book.amazonLink}
-            className="inline-block bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buy on Amazon
-          </Link>
-          
-          <div className="mt-12 space-y-8">
-            <div>
-              <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Heat Level</h2>
-              <p>{book.heatLevel}</p>
-            </div>
-            
-            <div>
-              <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Tags & Tropes</h2>
-              <div className="flex flex-wrap gap-2">
-                {book.tags.map((tag) => (
-                  <span key={tag} className="bg-purple-200 text-purple-900 px-3 py-1 rounded-full">
-                    {tag}
+          <div>
+            <h1 className={`${emilysCandy.className} text-4xl sm:text-5xl lg:text-6xl mb-4`}>
+              {book.title}
+            </h1>
+            {(book.series || book.genre) && (
+              <div className={`text-xl mb-4 ${book.theme.text}`}>
+                <Tooltip 
+                  content={
+                    book.genre === 'Romantic Fantasy' 
+                      ? 'Fantasy first, with a heaping spoonful of romance, as a treat.'
+                      : book.genre === 'Fantasy Romance'
+                      ? 'Romance-centered stories with a fantastical bent.'
+                      : `This book is categorized as ${book.genre}`
+                  }
+                >
+                  <span className={`${book.theme.accent} ${book.theme.text} px-3 py-1 rounded-full`}>
+                    {book.genre}
                   </span>
-                ))}
+                </Tooltip>
+                {book.series && (
+                  <>
+                    <span className="mx-2">•</span>
+                    {book.series}
+                  </>
+                )}
               </div>
+            )}
+            <div className="text-lg mb-8 prose prose-p:my-6">
+              <ReactMarkdown>{book.description}</ReactMarkdown>
             </div>
             
-            <div>
-              <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Content Warnings</h2>
-              <div className="flex flex-wrap gap-2">
-                {book.contentWarnings.map((warning) => (
-                  <span key={warning} className="bg-red-100 text-red-800 px-3 py-1 rounded-full">
-                    {warning}
-                  </span>
-                ))}
+            <Link 
+              href={book.amazonLink}
+              className="inline-block bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy on Amazon
+            </Link>
+            
+            <div className="mt-12 space-y-8">
+              <div>
+                <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Heat Level</h2>
+                <p>{book.heatLevel}</p>
+              </div>
+              
+              <div>
+                <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Tags & Tropes</h2>
+                <div className="flex flex-wrap gap-2">
+                  {book.tags.map((tag) => (
+                    <span key={tag} className={`${book.theme.accent} ${book.theme.text} px-3 py-1 rounded-full`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h2 className={`${emilysCandy.className} text-2xl mb-2`}>Content Warnings</h2>
+                <div className="flex flex-wrap gap-2">
+                  {book.contentWarnings.map((warning) => (
+                    <span key={warning} className="bg-red-100 text-red-800 px-3 py-1 rounded-full">
+                      {warning}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

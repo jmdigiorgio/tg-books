@@ -54,10 +54,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-custom-bg text-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-white text-gray-900`}
       >
         <Header />
-        <div className="pt-[72px]">
+        <div>
           {children}
         </div>
       </body>
