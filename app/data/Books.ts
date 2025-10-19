@@ -16,7 +16,7 @@ export const books: Record<string, Book> = {
     "a-cure-for-magic": {
         title: "A Cure for Magic",
         coverImage: "/cure-for-magic.jpg",
-        series: "The Ardor Cycle Series",
+        series: "The Ardor Magic Cycle Series",
         genre: "Romantic Fantasy",
         description: "Marika Cyran is destined to rule, if she survives her own power first.",
         amazonLink: "https://www.amazon.com/Cure-Magic-Ardor-Cycle-Book-ebook/dp/B0CW1F23NK",
@@ -54,15 +54,28 @@ export const books: Record<string, Book> = {
     },
     "poisoners-vengeance": {
         title: "Poisoner's Vengeance",
-        coverImage: "/poisoners-vengeance.jpg",
+        coverImage: "/poisoners-vengeance.png",
         series: "",
-        genre: "Romantic Fantasy",
+        genre: "Fantasy Mystery",
         description: "A nun with a thirst for revenge. A demon out to clear his name. A bargain that might destroy them.",
         amazonLink: "https://www.amazon.com/Poisoners-Vengeance-Romantic-Fantasy-Novel-ebook/dp/B0DV6GC39M",
         theme: {
             background: "bg-orange-50",
             accent: "bg-orange-200",
             text: "text-orange-900"
+        }
+    },
+    "hatman-harvest": {
+        title: "Hat Man Harvest",
+        coverImage: "/hatman-harvest.jpeg",
+        series: "Wild Wanderings Series",
+        genre: "Fantasy Romance",
+        description: "He's a monster who feeds on fear. She's never been less afraid.",
+        amazonLink: "https://www.amazon.com/Hat-Man-Harvest-Talia-Greer-ebook/dp/B0FV3NRK6R",
+        theme: {
+            background: "bg-blue-100",
+            accent: "bg-blue-300",
+            text: "text-blue-900"
         }
     }
 };

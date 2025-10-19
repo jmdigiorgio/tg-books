@@ -5,8 +5,9 @@ import { FaTiktok } from 'react-icons/fa6';
 import localFont from 'next/font/local'
 
 const emilysCandy = localFont({
-  src: '../fonts/EmilysCandy-Regular.ttf',
+  src: '../fonts/PlaywriteITModerna-VariableFont_wght.ttf',
   display: 'swap',
+  variable: '--font-playwrite'
 })
 
 export default function Header() {

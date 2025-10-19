@@ -194,9 +194,9 @@ To untangle the web of lies and secrets lying beneath the abbey, Annette must de
 
 &nbsp;
 
-*Perfect for fans of Ava Reid and Carissa Broadbent, POISONER'S VENGEANCE is an adult romantic fantasy novel with a slow burn enemies to lovers romance, dangerous bargains, and an isolated gothic fantasy setting.*`,
+*POISONER’S VENGEANCE is an adult fantasy mystery novel with a slow burn reluctant allies to lovers romance, dangerous bargains, and an isolated gothic fantasy setting.*`,
     releaseDate: '2025',
-    heatLevel: 'Medium-High',
+    heatLevel: 'Medium',
     tags: [
       'dangerous bargains',
       'a Black and autistic FMC',
@@ -212,6 +212,68 @@ To untangle the web of lies and secrets lying beneath the abbey, Annette must de
       'mild body horror and gore',
       'fictional religious horror',
       'sexual content'
+    ]
+  },
+  'hatman-harvest': {
+    ...baseBooks['hatman-harvest'],
+    description: `**He's a monster who feeds on fear. She's never been less afraid.**
+
+&nbsp;
+
+After a spectacular public meltdown and a hasty exit from the startup she helped build, Mia Williams isn't looking for meaning—just somewhere to disappear. A friend's strangely cheap sublet in Coral Key, a sleepy coastal town with odd energy and even stranger residents, seems perfect. Her plan is simple: pick up gig work, keep her head down, and stay far away from the chaos she left behind.
+
+&nbsp;
+
+But Coral Key doesn't do normal. And Mia's new job? Cleaning for the town's many inhuman residents.
+
+&nbsp;
+
+She's seen her fair share of unsettling clients—but none like Nate Alston. Tall, brooding, and barely clinging to his glamour, the shadowy nightmare creature feeds off of fear and is everything Mia should avoid.
+
+&nbsp;
+
+Nate's immortal, miserable, and very much not interested in falling for a human. But Mia's chaotic energy is addictive—and unafraid. Worse, she makes him feel… curious. Alive. Maybe even seen.
+
+&nbsp;
+
+When Mia needs a date to a Halloween party and Nate needs a distraction from instincts that are getting harder to control, they agree to fake it. Just for a few days. Just until the party.
+
+&nbsp;
+
+But Coral Key has a way of making even pretend things real—and falling for each other might be the most dangerous mistake they'll ever make.
+
+&nbsp;
+
+*Perfect for readers of Kathryn Moon and Lillian Lark, Hat Man Harvest is a dual-POV, full-length paranormal monster romance with a guaranteed HEA that features fake dating and an immortal shadow daddy.*`,
+    releaseDate: '2024',
+    heatLevel: 'High',
+    tags: [
+      'sleep paralysis but make it sexy',
+      'hello there the angel from my nightmare',
+      'literal shadow daddy',
+      'shadow tentacles',
+      'tortured immortal x human chaos',
+      'fake dating',
+      'monster falls first',
+      'dreamwalking intimacy',
+      '"We shouldn\'t"',
+      'bisexual rep'
+    ],
+    contentWarnings: [
+      'mental health themes',
+      'dark/morbid humor as a coping mechanism',
+      'panic attacks',
+      'toxic workplace dynamics',
+      'gaslighting',
+      'grief and loss',
+      'references to past suicidal ideation and attempt',
+      'self-harm imagery (non-graphic)',
+      'supernatural horror imagery',
+      'mild body horror',
+      'explicit sexual content',
+      'discussions of emotional manipulation',
+      'mild blood and injury',
+      'explicit language'
     ]
   }
 };
@@ -265,7 +327,7 @@ export default async function BookPage({
           </div>
           
           <div>
-            <h1 className={`${emilysCandy.className} text-4xl sm:text-5xl lg:text-6xl mb-4`}>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mb-4 font-bold">
               {book.title}
             </h1>
             {(book.series || book.genre) && (
